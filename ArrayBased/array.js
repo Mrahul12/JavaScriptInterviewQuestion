@@ -353,7 +353,70 @@ console.log(arr24.slice(0,3).length)
 function myFun(a,b,c){
 return [a,b,c,a,b,c];
 }
-let vs=myFun;
+let vs=myFun; 
 console.log(vs.length);
 let v=myFun(1,2,3);
 console.log(v.length);
+
+// ! Find Duplicate array element
+
+let arr25= [10, 20, 10, 20, 30, 40, 50, 60, 60];
+let arr26=[];
+arr25.map((val,ind)=>{
+  if(arr25.indexOf(val)!==ind){
+   arr26.push(val)
+  }
+})
+console.log('Get Duplicate Array Element :',arr26);
+
+// ! Sort array 
+let arr27 = [64, 34, 25, 12, 22, 11, 90];
+
+// way-01
+console.log(arr27.sort((a,b)=>a-b));
+
+// way-02 without using temp veriable
+
+function swapWithoutTemp(arr){
+if (arr.length == 1)  return'miniimum two value';
+  for (let i = 0; i < arr.length; i++) {
+     for (let j = 0; j < arr.length-1-i; j++) {
+      if(arr[j]>arr[j+1]){
+        arr[j]=arr[j]+arr[j+1];
+        arr[j+1]=arr[j]-arr[j+1];
+        arr[j]=arr[j]-arr[j+1];
+      }
+     }
+  }
+  return arr;
+}
+console.log(swapWithoutTemp(arr27));
+// way-03 with using temp veriable
+function swapWithTemp(arr){
+if (arr.length == 1)  return'miniimum two value';
+  for (let i = 0; i < arr.length; i++) {
+     for (let j = 0; j < arr.length-1-i; j++) {
+      if(arr[j]>arr[j+1]){
+        temp=arr[j];
+        arr[j+1]=arr[j];
+        temp=arr[j+1];
+      }
+     }
+  }
+  return arr;
+}
+console.log(swapWithTemp(arr27));
+
+// way-03 with using array destructuring
+function swapWithTemp(arr){
+if (arr.length == 1)  return'miniimum two value';
+  for (let i = 0; i < arr.length; i++) {
+     for (let j = 0; j < arr.length-1-i; j++) {
+      if(arr[j]>arr[j+1]){
+        [arr[j],arr[j+1]]=[arr[j+1],arr[j]]
+      }
+     }
+  }
+  return arr;
+}
+console.log(swapWithTemp(arr27));
